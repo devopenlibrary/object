@@ -858,8 +858,7 @@ end
 
 | 오퍼레이션 | 정규 직원 | 아르바이트 직원 |
 | --- | --- | --- |
-| calculatePay() | basePay - (basePay * taxRate) | (basePay * timeCard) - 
-(basePay * timeCard) * taxRate |
+| calculatePay() | basePay - (basePay * taxRate) | (basePay * timeCard) - (basePay * timeCard) * taxRate |
 | monthlyBasePay() | basePay | 0 |
 
 #### **타입 추상화 vs 절차 추상화**
