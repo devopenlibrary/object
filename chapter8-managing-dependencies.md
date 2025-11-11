@@ -552,9 +552,9 @@ public class Movie {
 															new SequenceCondition(1),
 															new SequenceCondition(10),
 															new PeriodCondition(DayOfWeek.MONDAY,
-																			LocalTime.of(10, @), LocalTime.of(11, 59)),
+																			LocalTime.of(10, 0), LocalTime.of(11, 59)),
 															new PeriodCondition(DayOfWeek.THURSDAY,
-																			LocalTime.of(10, @), LocalTime.of(20, 59))));
+																			LocalTime.of(10, 0), LocalTime.of(20, 59))));
 	}
 }
 ```
@@ -609,15 +609,15 @@ public class Movie {
     
     ```java
     Movie avatar = new Movie("아바타",
-    													Duration.ofMinutes(120),
-    													Money.wons(10000),
-    													new AmountDiscountPolicy(Money.wons(800),
-    													new SequenceCondition(1),
-    													new SequenceCondition(10),
-    													new PeriodCondition(DayOfWeek.MONDAY,
-    													LocalTime.of(10, @), LocalTime.of(11, 59)),
-    													new PeriodCondition(DayOfWeek.THURSDAY,
-    													LocalTime.of(10, 0), LocalTime.of(20, 59))));
+    							Duration.ofMinutes(120),
+    							Money.wons(10000),
+    							new AmountDiscountPolicy(Money.wons(800),
+    							new SequenceCondition(1),
+    							new SequenceCondition(10),
+    							new PeriodCondition(DayOfWeek.MONDAY,
+    							LocalTime.of(10, 0), LocalTime.of(11, 59)),
+    							new PeriodCondition(DayOfWeek.THURSDAY,
+    							LocalTime.of(10, 0), LocalTime.of(20, 59))));
     ```
     
     - Movie는 AmountDiscountPolicy의 인스턴스를 사용하는 책임만 남는다.
@@ -761,9 +761,9 @@ public abstract class DiscountPolicy {
     
     ```java
     Movie avatar = new Movie("아바타",
-    													Duration.ofMinutes(120),
-    													Money.wons(10000),
-    													new NoneDiscountPolicy());
+    							Duration.ofMinutes(120),
+    							Money.wons(10000),
+    							new NoneDiscountPolicy());
     ```
     
     Movie에 특별한 if 문 추가 불필요하다.
@@ -804,11 +804,11 @@ public abstract class DiscountPolicy {
     
     ```java
     Movie avatar = new Movie("아바타",
-    													Duration.ofMinutes(120),
-    													Money.wons(10000),
-    													new OverlappedDiscountPolicy(
-    													new AmountDiscountPolicy( ... ),
-    													new PercentDiscountPolicy( ... )));
+    							Duration.ofMinutes(120),
+    							Money.wons(10000),
+    							new OverlappedDiscountPolicy(
+    							new AmountDiscountPolicy( ... ),
+    							new PercentDiscountPolicy( ... )));
     ```
     
     - 중복 할인을 할인 정책의 한 종류로 간주
